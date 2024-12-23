@@ -2,7 +2,7 @@ using FluentAssertions;
 using SkiaSharp;
 using TagCloud.Utility;
 
-namespace TagCloudTests;
+namespace TagCloudTests.CloudLayouter;
 
 [TestFixture]
 [TestOf(typeof(RandomExtensions))]

@@ -2,7 +2,7 @@ using FluentAssertions;
 using SkiaSharp;
 using TagCloud.PointsGenerator;
 
-namespace TagCloudTests;
+namespace TagCloudTests.CloudLayouter;
 
 [TestFixture]
 [TestOf(typeof(SpiralPointsGenerator))]

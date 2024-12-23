@@ -3,7 +3,7 @@ using SkiaSharp;
 using TagCloud.CloudLayouter;
 using TagCloud.Utility;
 
-namespace TagCloudTests;
+namespace TagCloudTests.CloudLayouter;
 
 [TestFixture]
 [TestOf(typeof(CircularCloudLayouter))]

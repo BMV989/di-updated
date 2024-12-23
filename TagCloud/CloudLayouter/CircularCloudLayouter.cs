@@ -1,18 +1,20 @@
 ﻿using SkiaSharp;
+using TagCloud.CloudLayouter.Settings;
 using TagCloud.PointsGenerator;
 
 namespace TagCloud.CloudLayouter;
 
-public class CircularCloudLayouter(SKPoint center) : ICloudLayouter
+public class CircularCloudLayouter(SKPoint center, double radius = 1, double angleOffset = 0.5) : ICloudLayouter
 {
-    private const double OptimalRadius = 1;
-    private const double OptimalAngleOffset = 0.5;
     
     private readonly List<SKRect> rectangles = [];
-    private readonly SpiralPointsGenerator pointsGenerator = new(center, OptimalRadius, OptimalAngleOffset);
+    private readonly SpiralPointsGenerator pointsGenerator = new(center, radius, angleOffset);
     
     public SKPoint Center => center;
-    public IEnumerable<SKRect> Rectangles => rectangles;
+
+    public CircularCloudLayouter(CircularCloudLayouterSettings settings) : this(settings.Center, settings.Radius,
+        settings.AngleOffset)
+    { }
     
     public SKRect PutNextRectangle(SKSize rectangleSize)
     {
