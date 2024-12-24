@@ -1,4 +1,3 @@
-using System.Drawing;
 using SkiaSharp;
 using TagCloud.CloudLayouter;
 using TagCloud.Visualization.Settings;
