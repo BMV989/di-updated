@@ -67,9 +67,8 @@ internal class Program
         builder.RegisterType<LowercaseFilter>().As<IWordsFilter>();
         builder.RegisterType<BoringWordsFilter>().As<IWordsFilter>();
     }
-    
-    
-private static void RegisterLayouter(ContainerBuilder builder, Options settings)
+
+    private static void RegisterLayouter(ContainerBuilder builder, Options settings)
     {
         builder.RegisterType<CircularCloudLayouter>().As<ICloudLayouter>();
     }
