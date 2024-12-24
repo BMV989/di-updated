@@ -12,12 +12,7 @@ public class TagCloudSaver(string imageName, string imageFormat)
         { "png", SKEncodedImageFormat.Png },
         { "jpeg", SKEncodedImageFormat.Jpeg },
         { "bmp", SKEncodedImageFormat.Bmp },
-        { "gif", SKEncodedImageFormat.Gif },
-        { "ico", SKEncodedImageFormat.Ico },
-        { "wbmp", SKEncodedImageFormat.Wbmp },
         { "webp", SKEncodedImageFormat.Webp },
-        { "heif", SKEncodedImageFormat.Heif },
-        { "avif", SKEncodedImageFormat.Avif }
     };
     
     public TagCloudSaver(TagCloudSaverSettings settings)

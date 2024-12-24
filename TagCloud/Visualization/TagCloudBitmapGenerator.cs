@@ -1,13 +1,15 @@
 using System.Drawing;
 using SkiaSharp;
+using TagCloud.CloudLayouter;
 using TagCloud.Visualization.Settings;
 
 namespace TagCloud.Visualization;
 
-public class TagCloudBitmapGenerator(SKSizeI size, SKTypeface fontFamily, SKColor background, SKColor foreground)
+public class TagCloudBitmapGenerator(SKSizeI size, SKTypeface fontFamily, SKColor background, SKColor foreground, 
+    ICloudLayouter layouter)
 {
-    public TagCloudBitmapGenerator(TagCloudBitmapGeneratorSettings settings) : 
-        this(settings.Size, settings.FontFamily, settings.Background, settings.Foreground)
+    public TagCloudBitmapGenerator(TagCloudBitmapGeneratorSettings settings, ICloudLayouter layouter) : 
+        this(settings.Size, settings.FontFamily, settings.Background, settings.Foreground, layouter)
     { }
     
     public SKBitmap GenerateBitmap(List<WordTag> tags)
@@ -20,16 +22,26 @@ public class TagCloudBitmapGenerator(SKSizeI size, SKTypeface fontFamily, SKColo
         var paint = new SKPaint 
         { 
             Color = foreground,
-            Style = SKPaintStyle.Stroke
+            Style = SKPaintStyle.StrokeAndFill
         };
         
         canvas.Clear(background);
-
-        var font = new SKFont(fontFamily, tags[0].FontSize);
         
+        foreach (var tag in tags)
+        {
+            var font = new SKFont(fontFamily, tag.FontSize);
+            var wordSize = MeasureWord(tag.Word, font);
+            
+            var positionRect = layouter.PutNextRectangle(wordSize);
+            canvas.DrawText(tag.Word, positionRect.Left, positionRect.Top + font.Metrics.CapHeight, font, paint);
+        }
         
-       // TODO: Implement drawing of tags on canvas 
-
         return bitmap;
+    }
+
+    private static SKSize MeasureWord(string word, SKFont font)
+    {
+        font.MeasureText(word, out var bounds);
+        return new SKSize(bounds.Width, bounds.Height);
     }
 }
