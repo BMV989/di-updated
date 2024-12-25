@@ -6,7 +6,7 @@ namespace TagCloudTests.CloudLayouter;
 
 [TestFixture]
 [TestOf(typeof(RandomExtensions))]
-public class RandomExtensionTests
+public class RandomExtensionsTests
 {
     private const int Seed = 123456789;
     private readonly Random random = new(Seed);
