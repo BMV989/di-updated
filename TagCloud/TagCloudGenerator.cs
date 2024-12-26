@@ -23,10 +23,9 @@ public class TagCloudGenerator(IWordsReader reader, ITagCloudSaver saver, TagClo
        var tagsList = freqDict.Select(pair => ToWordTag(pair, maxFreq)).ToList();
        
        return saver.Save(bitmapGenerator.GenerateBitmap(tagsList)); 
-    }
-      private static int TransformFreqToSize(int freq, int maxFreq) =>
-          (int)(MinFontSize + (float)freq / maxFreq * (MaxFontSize - MinFontSize));
-    
-        private static WordTag ToWordTag(KeyValuePair<string, int> pair, int maxFreq) => 
+    } 
+    private static int TransformFreqToSize(int freq, int maxFreq) =>
+          (int)(MinFontSize + (float)freq / maxFreq * (MaxFontSize - MinFontSize)); 
+    private static WordTag ToWordTag(KeyValuePair<string, int> pair, int maxFreq) => 
             new(pair.Key, TransformFreqToSize(pair.Value, maxFreq));
 }
