@@ -13,9 +13,6 @@ public class TagCloudBitmapGenerator(SKSizeI size, SKTypeface fontFamily, SKColo
     
     public SKBitmap GenerateBitmap(List<WordTag> tags)
     {
-        if (fontFamily == null)
-            throw new ArgumentNullException($"Could not find font family: {fontFamily}");
-        
         var bitmap = new SKBitmap(size.Width,  size.Height);
         var canvas = new SKCanvas(bitmap);
         var paint = new SKPaint 

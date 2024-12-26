@@ -25,7 +25,7 @@ public class Options
         Required = false, 
         HelpText = "Words font")]
     public string FontFamilyName { get; set; } = "Arial";
-    public SKTypeface FontFamily => SKTypeface.FromFamilyName(FontFamilyName);
+    public SKTypeface FontFamily => SKTypeface.FromFamilyName(FontFamilyName) ?? SKTypeface.Default;
 
     [Option('b', "background-color",
         Required = false,
