@@ -8,16 +8,15 @@ namespace TagCloudTests.WordsReader;
 [TestFixture]
 public class WordsReadersTest
 {
-    private const string FileContent = 
-        "Hello... Hello? Hello world!";
+    private const string FileContent = "Hello... Hello? Hello world!";
     
     private static IEnumerable<TestCaseData> WordsReadersTestCases
     {
         get
         {
-            yield return new TestCaseData(new WordFileReader("../../../WordsReader/Samples/text.docx"));
-            yield return new TestCaseData(new FileReader("../../../WordsReader/Samples/text.txt", Encoding.UTF8));
-            yield return new TestCaseData(new CsvFileReader("../../../WordsReader/Samples/text.csv", CultureInfo.InvariantCulture));
+            yield return new TestCaseData(new WordFileReader("WordsReader/Samples/text.docx"));
+            yield return new TestCaseData(new FileReader("WordsReader/Samples/text.txt", Encoding.UTF8));
+            yield return new TestCaseData(new CsvFileReader("WordsReader/Samples/text.csv", CultureInfo.InvariantCulture));
         }
     }
     

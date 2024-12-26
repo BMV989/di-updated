@@ -5,8 +5,8 @@ namespace TagCloud.WordsFilter;
 public class BoringWordsFilter : IWordsFilter
 {
     private readonly WordList wordList = WordList.CreateFromFiles(
-        "../../../../TagCloud/WordsFilter/Dictionaries/EnUS.dic", 
-        "../../../../TagCloud/WordsFilter/Dictionaries/EnUS.aff");
+        "Dictionaries/EnUS.dic", 
+        "Dictionaries/EnUS.aff");
 
     public List<string> ApplyFilter(List<string> words) => 
         words.Where(w => !IsBoring(w)).ToList();
