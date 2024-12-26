@@ -48,18 +48,22 @@ internal class Program
     }
    
     private static void RegisterWordsReaders(ContainerBuilder builder, Options settings)
-    { 
-        builder
-            .RegisterType<FileReader>().As<IWordsReader>()
-            .OnlyIf(_ => Path.GetExtension(settings.FilePath) == ".txt");
-
-        builder
-            .RegisterType<CsvFileReader>().As<IWordsReader>()
-            .OnlyIf(_ => Path.GetExtension(settings.FilePath) == ".csv");
+    {
+        var fileExtension = Path.GetExtension(settings.FilePath);
         
-        builder
-            .RegisterType<WordFileReader>().As<IWordsReader>()
-            .OnlyIf(_ => Path.GetExtension(settings.FilePath) == ".docx");
+        switch (fileExtension)
+        {
+            case ".csv": 
+                builder.RegisterType<CsvFileReader>().As<IWordsReader>();
+                break;
+            case ".doc":
+            case ".docx":
+                builder.RegisterType<WordFileReader>().As<IWordsReader>();
+                break;
+            default:
+                builder.RegisterType<FileReader>().As<IWordsReader>();
+                break;
+        }
     }
     
     private static void RegisterWordsFilters(ContainerBuilder builder, Options settings)
