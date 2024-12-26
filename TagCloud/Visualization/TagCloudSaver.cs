@@ -3,7 +3,7 @@ using TagCloud.Visualization.Settings;
 
 namespace TagCloud.Visualization;
 
-public class TagCloudSaver(string imageName, string imageFormat)
+public class TagCloudSaver(string imageName, string imageFormat) : ITagCloudSaver
 {
     private const int ImageQuality = 80;
 

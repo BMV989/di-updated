@@ -32,7 +32,7 @@ internal class Program
 
         builder.RegisterType<TagCloudGenerator>().AsSelf();
         builder.RegisterType<TagCloudBitmapGenerator>().AsSelf();
-        builder.RegisterType<TagCloudSaver>().AsSelf();
+        builder.RegisterType<TagCloudSaver>().As<ITagCloudSaver>();
 
         return builder.Build();
     }

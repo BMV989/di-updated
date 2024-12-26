@@ -4,7 +4,7 @@ using TagCloud.WordsReader;
 
 namespace TagCloud;
 
-public class TagCloudGenerator(IWordsReader reader, TagCloudSaver saver, TagCloudBitmapGenerator bitmapGenerator, 
+public class TagCloudGenerator(IWordsReader reader, ITagCloudSaver saver, TagCloudBitmapGenerator bitmapGenerator, 
     IEnumerable<IWordsFilter> filters)
 {
     private const int MinFontSize = 10;
