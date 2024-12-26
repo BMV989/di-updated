@@ -29,7 +29,7 @@ public class TagCloudGeneratorTest
 
     private static TagCloudGenerator InitGenerator()
     {
-        var fileReader = new FileReader("../../../Samples/sample.txt", Encoding.UTF8);
+        var fileReader = new FileReader("Samples/sample.txt", Encoding.UTF8);
         var imageSaver = new TagCloudSaver("test", "png");
         var layouter = new CircularCloudLayouter(new SKPoint(1920 / 2f, 1080 / 2f));
         var imageGenerator = new TagCloudBitmapGenerator(new SKSizeI(1920, 1080), SKTypeface.FromFamilyName("Arial"), 
